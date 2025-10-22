@@ -11,33 +11,48 @@
 	<link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-	Contact Us
-
-	First Name
-	This field is required
-
-	Last Name
-	This field is required
-
-	Email Address
-	Please enter a valid email address
-	This field is required
-
-	Query Type
-	General Enquiry
-	Support Request
-	Please select a query type
-
-	Message
-	This field is required
-
-	I consent to being contacted by the team
-	To submit this form, please consent to being contacted
-
-	Submit
-
-	Message Sent!
-	Thanks for completing the form. We'll be in touch soon!
+	<main>
+		<h1>Contact Us</h1>
+		<form action="#" method="post">
+			<div class="full-name">
+				<div class="first-name">
+					<label for="first-name">First Name</label>
+					<input id="first-name" type="text" name="first-name" placeholder="John">
+				</div>
+				<div class="last-name">
+					<label for="last-name">Last Name</label>
+					<input id="last-name" type="text" name="last-name" placeholder="Doe">
+				</div>
+			</div>
+			<div class="email-address">
+				<label for="email-address">Email Address</label>
+				<input id="email-address" type="text" name="email-address" placeholder="johndoe@example.com">
+			</div>
+			<fieldset class="query-type">
+				<legend>Query Type</legend>
+				<label class="radio-wrapper">
+					<input type="radio" name="query-type" value="general">
+					<span class="radio-btn"></span>
+					General Enquiry
+				</label>
+				<label class="radio-wrapper">
+					<input type="radio" name="query-type" value="support">
+					<span class="radio-btn"></span>
+					Support Request
+				</label>
+			</fieldset>
+			<div class="message">
+				<label for="message">Message</label>
+				<textarea id="message" name="message" placeholder="Enter your message"></textarea>
+			</div>
+			<label class="checkbox-wrapper">
+				<input id="contact" type="checkbox" name="contact" value="consent">
+				<span class="checkbox"></span>
+				I consent to being contacted by the team
+			</label>
+			<button type="submit">Submit</button>
+		</form>
+	</main>
 	<script src="/index.js"></script>
 </body>
 </html>
