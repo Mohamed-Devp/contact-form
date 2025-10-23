@@ -16,22 +16,22 @@
 		<form action="#" method="post">
 			<div class="full-name">
 				<div class="first-name">
-					<label for="first-name">First Name</label>
-					<input id="first-name" type="text" name="first-name" placeholder="John">
+					<label class="required" for="first-name">First Name</label>
+					<input id="first-name" type="text" name="first-name" placeholder="John" required>
 				</div>
 				<div class="last-name">
-					<label for="last-name">Last Name</label>
-					<input id="last-name" type="text" name="last-name" placeholder="Doe">
+					<label class="required" for="last-name">Last Name</label>
+					<input id="last-name" type="text" name="last-name" placeholder="Doe" required>
 				</div>
 			</div>
 			<div class="email-address">
-				<label for="email-address">Email Address</label>
-				<input id="email-address" type="text" name="email-address" placeholder="johndoe@example.com">
+				<label class="required" for="email-address">Email Address</label>
+				<input id="email-address" type="text" name="email-address" placeholder="johndoe@example.com" required>
 			</div>
 			<fieldset class="query-type">
-				<legend>Query Type</legend>
+				<legend class="required">Query Type</legend>
 				<label class="radio-wrapper">
-					<input type="radio" name="query-type" value="general">
+					<input type="radio" name="query-type" value="general" required>
 					<span class="radio-btn"></span>
 					General Enquiry
 				</label>
@@ -42,11 +42,11 @@
 				</label>
 			</fieldset>
 			<div class="message">
-				<label for="message">Message</label>
-				<textarea id="message" name="message" placeholder="Enter your message"></textarea>
+				<label class="required" for="message">Message</label>
+				<textarea id="message" name="message" placeholder="Enter your message" required></textarea>
 			</div>
-			<label class="checkbox-wrapper">
-				<input id="contact" type="checkbox" name="contact" value="consent">
+			<label class="checkbox-wrapper required">
+				<input id="contact" type="checkbox" name="contact" value="consent" required>
 				<span class="checkbox"></span>
 				I consent to being contacted by the team
 			</label>
