@@ -56,22 +56,33 @@ form {
 }
 
 label, legend {
+    position: relative;
     font-size: var(--fs);
     font-weight: var(--regular);
     color: var(--grey-900);
+}
+
+input[type="text"], textarea, span, label, .submit {
+    transition: border-color .2s ease-in, background-color .2s ease-in;
 }
 
 input[type="text"], textarea {
     padding: 0.875rem 1.5rem;
-    border: 1px solid var(--grey-500);
+    border: 2px solid var(--grey-500);
     border-radius: 0.5rem;
     font-size: var(--fs);
     font-weight: var(--regular);
     color: var(--grey-900);
+    cursor: pointer;
 }
 
-label:has(input[type="radio"]), label:has(input[type="checkbox"]) {
-    position: relative;
+input[type="text"]:hover, textarea:hover {
+    border-color: var(--green-600);
+}
+
+input[type="text"]:focus, textarea:focus {
+    cursor: text;
+    border-color: var(--green-600);
 }
 
 input[type="radio"], input[type="checkbox"] {
@@ -88,7 +99,6 @@ label + input[type="text"], label + textarea {
 }
 
 .required {
-    position: relative;
     width: fit-content;
 }
 
@@ -123,8 +133,13 @@ label + input[type="text"], label + textarea {
     align-items: center;
     gap: 0.5rem;
     padding: 0.875rem 1.5rem;
-    border: 1px solid var(--grey-500);
+    border: 2px solid var(--grey-500);
     border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.radio-wrapper:hover, .radio-wrapper:has(input:focus) {
+    border-color: var(--green-600);
 }
 
 .radio-btn {
@@ -144,6 +159,7 @@ textarea {
     align-items: center;
     gap: 1rem;
     padding: 0.75rem 0;
+    cursor: pointer;
 }
 
 .checkbox {
@@ -152,11 +168,20 @@ textarea {
     border: 2px solid var(--grey-500);
 }
 
-button[type="submit"] {
+.checkbox-wrapper:hover .checkbox, input:focus + .checkbox {
+    border-color: var(--green-600);
+}
+
+.submit {
     padding: 1rem 0;
     border-radius: 0.5rem;
     font-size: var(--fs);
     font-weight: var(--regular);
     color: var(--white);
     background-color: var(--green-600);
+    cursor: pointer;
+}
+
+.submit:hover, .submit:focus {
+    background-color: var(--grey-900);
 }
