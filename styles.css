@@ -136,17 +136,43 @@ label + input[type="text"], label + textarea {
     border: 2px solid var(--grey-500);
     border-radius: 0.5rem;
     cursor: pointer;
+    user-select: none;
 }
 
 .radio-wrapper:hover, .radio-wrapper:has(input:focus) {
     border-color: var(--green-600);
 }
 
+.radio-wrapper:has(input:checked) {
+    border-color: var(--green-600);
+    background-color: var(--green-200);
+}
+
 .radio-btn {
+    position: relative;
     width: 1rem;
     height: 1rem;
-    border: 1px solid var(--grey-500);
+    border: 2px solid var(--grey-500);
     border-radius: 50%;
+}
+
+.radio-btn img {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s ease-in;
+}
+
+input[type="radio"]:checked + .radio-btn {
+    border-color: transparent;
+}
+
+input[type="radio"]:checked + .radio-btn img {
+    opacity: 1;
 }
 
 textarea {
@@ -163,9 +189,29 @@ textarea {
 }
 
 .checkbox {
+    position: relative;
     width: 1rem;
     height: 1rem;
     border: 2px solid var(--grey-500);
+}
+
+.checkbox img {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s ease-in;
+}
+
+input[type="checkbox"]:checked + .checkbox {
+    border-color: transparent;
+}
+
+input[type="checkbox"]:checked + .checkbox img {
+    opacity: 1;
 }
 
 .checkbox-wrapper:hover .checkbox, input:focus + .checkbox {
