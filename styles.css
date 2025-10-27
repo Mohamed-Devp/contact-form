@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Primary colors */
+    --green-200: hsl(148, 38%, 91%);
+    --green-600: hsl(169, 82%, 27%);
+    --red: hsl(0, 66%, 54%);
+
+    /* Neutral colors */
+    --white: hsl(0, 0%, 100%);
+    --grey-500: hsl(186, 15%, 59%);
+    --grey-900: hsl(187, 24%, 22%);
+
+    /* Typography */
+    --primary-font: "Karla";
+    --fs: 1rem; /* Default font size */
+    --regular: 400;
+    --bold: 700;
+}
+
+body {
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    padding: 4rem 0;
+    font-family: var(--primary-font);
+    background-color: var(--green-200);
+}
+
+main {
+    width: min(90vw, 44rem);
+    height: min-content;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: var(--white);
+}
+
+h1 {
+    color: var(--grey-900);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    margin-top: 2rem;
+}
+
+label, legend {
+    position: relative;
+    font-size: var(--fs);
+    font-weight: var(--regular);
+    color: var(--grey-900);
+}
+
+input[type="text"], textarea, span, label, .submit {
+    transition: border-color .2s ease-in, background-color .2s ease-in;
+}
+
+input[type="text"], textarea {
+    padding: 0.875rem 1.5rem;
+    border: 2px solid var(--grey-500);
+    border-radius: 0.5rem;
+    font-size: var(--fs);
+    font-weight: var(--regular);
+    color: var(--grey-900);
+    cursor: pointer;
+}
+
+input[type="text"]:hover, textarea:hover {
+    border-color: var(--green-600);
+}
+
+input[type="text"]:focus, textarea:focus {
+    cursor: text;
+    border-color: var(--green-600);
+}
+
+input[type="radio"], input[type="checkbox"] {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    opacity: 0;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+label + input[type="text"], label + textarea {
+    margin-top: 10px;
+}
+
+.asterisk {
+    margin-left: 4px;
+    font-size: var(--fs);
+    font-weight: var(--regular);
+    color: var(--green-600);
+}
+
+.full-name, .query-type {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.first-name, .last-name, .email-address, .message {
+    display: flex;
+    flex-direction: column;
+}
+
+.query-type {
+    padding-top: 1.125rem;
+}
+
+.radio-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border: 2px solid var(--grey-500);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.radio-wrapper:hover, .radio-wrapper:has(input:focus) {
+    border-color: var(--green-600);
+}
+
+.radio-wrapper:has(input:checked) {
+    border-color: var(--green-600);
+    background-color: var(--green-200);
+}
+
+.radio-btn {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    border: 2px solid var(--grey-500);
+    border-radius: 50%;
+}
+
+.radio-btn img {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s ease-in;
+}
+
+input[type="radio"]:checked + .radio-btn {
+    border-color: transparent;
+}
+
+input[type="radio"]:checked + .radio-btn img {
+    opacity: 1;
+}
+
+textarea {
+    height: 7rem;
+    resize: none;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    cursor: pointer;
+}
+
+.checkbox {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    border: 2px solid var(--grey-500);
+}
+
+.checkbox img {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s ease-in;
+}
+
+.label-text {
+    line-height: 1.4;
+}
+
+.label-text .last-word {
+    text-wrap: nowrap;
+}
+
+input[type="checkbox"]:checked + .checkbox {
+    border-color: transparent;
+}
+
+input[type="checkbox"]:checked + .checkbox img {
+    opacity: 1;
+}
+
+.checkbox-wrapper:hover .checkbox, input:focus + .checkbox {
+    border-color: var(--green-600);
+}
+
+.submit {
+    padding: 1rem 0;
+    border-radius: 0.5rem;
+    font-size: var(--fs);
+    font-weight: var(--regular);
+    color: var(--white);
+    background-color: var(--green-600);
+    cursor: pointer;
+}
+
+.submit:hover, .submit:focus {
+    background-color: var(--grey-900);
+}
+
+@media (max-width: 38rem) {
+    body {
+        padding: 2rem 0;
+    }
+
+    .full-name, .query-type {
+        grid-template-columns: 1fr;
+    }
+
+    .full-name {
+        gap: 1.75rem;
+    }
+
+    .query-type {
+        gap: 0.75rem;
+    }
+
+    textarea {
+        height: 12rem;
+    }
+}
+
+@media (max-width: 28rem) {
+    main {
+        padding: 1.5rem;
+    }
+}
