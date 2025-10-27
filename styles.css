@@ -37,7 +37,7 @@ body {
 }
 
 main {
-    width: 44rem;
+    width: min(90vw, 44rem);
     height: min-content;
     padding: 2rem;
     border-radius: 1rem;
@@ -98,16 +98,8 @@ label + input[type="text"], label + textarea {
     margin-top: 10px;
 }
 
-.required {
-    width: fit-content;
-}
-
-.required::after {
-    content: "*";
-    position: absolute;
-    left: calc(100% + 6px);
-    top: calc(50% - 2px);
-    transform: translateY(-50%);
+.asterisk {
+    margin-left: 4px;
     font-size: var(--fs);
     font-weight: var(--regular);
     color: var(--green-600);
@@ -152,6 +144,7 @@ label + input[type="text"], label + textarea {
     position: relative;
     width: 1rem;
     height: 1rem;
+    flex-shrink: 0;
     border: 2px solid var(--grey-500);
     border-radius: 50%;
 }
@@ -192,6 +185,7 @@ textarea {
     position: relative;
     width: 1rem;
     height: 1rem;
+    flex-shrink: 0;
     border: 2px solid var(--grey-500);
 }
 
@@ -204,6 +198,14 @@ textarea {
     opacity: 0;
     transform: translate(-50%, -50%);
     transition: opacity 0.2s ease-in;
+}
+
+.label-text {
+    line-height: 1.4;
+}
+
+.label-text .last-word {
+    text-wrap: nowrap;
 }
 
 input[type="checkbox"]:checked + .checkbox {
@@ -230,4 +232,32 @@ input[type="checkbox"]:checked + .checkbox img {
 
 .submit:hover, .submit:focus {
     background-color: var(--grey-900);
+}
+
+@media (max-width: 38rem) {
+    body {
+        padding: 2rem 0;
+    }
+
+    .full-name, .query-type {
+        grid-template-columns: 1fr;
+    }
+
+    .full-name {
+        gap: 1.75rem;
+    }
+
+    .query-type {
+        gap: 0.75rem;
+    }
+
+    textarea {
+        height: 12rem;
+    }
+}
+
+@media (max-width: 28rem) {
+    main {
+        padding: 1.5rem;
+    }
 }

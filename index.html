@@ -16,20 +16,28 @@
 		<form action="#" method="post">
 			<div class="full-name">
 				<div class="first-name">
-					<label class="required" for="first-name">First Name</label>
+					<label for="first-name">
+						First Name <span class="asterisk" aria-hidden="true">*</span>
+					</label>
 					<input id="first-name" type="text" name="first-name" placeholder="John" required>
 				</div>
 				<div class="last-name">
-					<label class="required" for="last-name">Last Name</label>
+					<label for="last-name">
+						Last Name <span class="asterisk" aria-hidden="true">*</span>
+					</label>
 					<input id="last-name" type="text" name="last-name" placeholder="Doe" required>
 				</div>
 			</div>
 			<div class="email-address">
-				<label class="required" for="email-address">Email Address</label>
+				<label for="email-address">
+					Email Address <span class="asterisk" aria-hidden="true">*</span>
+				</label>
 				<input id="email-address" type="text" name="email-address" placeholder="johndoe@example.com" required>
 			</div>
 			<fieldset class="query-type">
-				<legend class="required">Query Type</legend>
+				<legend>
+					Query Type <span class="asterisk" aria-hidden="true">*</span>
+				</legend>
 				<label class="radio-wrapper">
 					<input type="radio" name="query-type" value="general" required>
 					<span class="radio-btn">
@@ -46,15 +54,19 @@
 				</label>
 			</fieldset>
 			<div class="message">
-				<label class="required" for="message">Message</label>
+				<label for="message">
+					Message <span class="asterisk" aria-hidden="true">*</span>
+				</label>
 				<textarea id="message" name="message" placeholder="Enter your message" required></textarea>
 			</div>
-			<label class="checkbox-wrapper required">
+			<label class="checkbox-wrapper">
 				<input id="contact" type="checkbox" name="contact" value="consent" required>
 				<span class="checkbox">
 					<img src="./images/icon-checkbox-check.svg" alt="Checked checkbox">
 				</span>
-				I consent to being contacted by the team
+				<span class="label-text">
+					I consent to being contacted by the <span class="last-word">team <span class="asterisk" aria-hidden="true">*</span></span>
+				</span>
 			</label>
 			<button class="submit" type="submit">Submit</button>
 		</form>
