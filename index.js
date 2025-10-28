@@ -1,5 +1,12 @@
 const form = document.querySelector('form');
 
+const textFields = document.querySelectorAll('input[type="text"], textarea');
+const emailField = document.getElementById('email-address');
+const queryTypeField = document.querySelector('[name="query-type"]');
+const contactField = document.querySelector('[name="contact"]');
+
+const successMsg = document.querySelector('.success-message');
+
 function validateTextField(name, inputEl, parentElement) {
     const errorMsg = parentElement.querySelector('.error-msg');
     errorMsg.classList.remove('empty');
@@ -69,8 +76,6 @@ form.addEventListener('submit', (event) => {
     let valid = true;
 
     // Validate "input[type="text"]" and "textarea" fields
-    const textFields = document.querySelectorAll('input[type="text"], textarea');
-
     const names = ['First name', 'Last name', 'Message'];
 
     textFields.forEach((textField, key) => {
@@ -83,8 +88,6 @@ form.addEventListener('submit', (event) => {
     });
 
     // Validate email address field
-    const emailField = document.getElementById('email-address');
-
     if (!validateEmailField(emailField, emailField.parentElement)) {
         if (valid) {
             emailField.focus();
@@ -93,7 +96,6 @@ form.addEventListener('submit', (event) => {
     }
 
     // Validate query type field
-    const queryTypeField = document.querySelector('[name="query-type"]');
     const queryTypeParent = queryTypeField.closest('fieldset');
     const queryTypeMsg = 'Please select a query type';
     
@@ -105,7 +107,6 @@ form.addEventListener('submit', (event) => {
     }
 
     // Validate contact consent field
-    const contactField = document.querySelector('[name="contact"]');
     const contactParent = contactField.closest('.contact-consent');
     const contactMsg = 'To submit this form, please consent to being contacted';
 
@@ -117,6 +118,17 @@ form.addEventListener('submit', (event) => {
     }
 
     if (valid) {
-        alert("Form submitted successfully!");
+        form.reset();
+        successMsg.classList.add('visible');
+        successMsg.focus();
+
+        setTimeout(() => {
+            successMsg.classList.add('fade-out');
+
+            setTimeout(() => {
+                successMsg.classList.remove('visible', 'faide-out');
+                textFields[0].focus(); // Return focus to the "First Name" field
+            }, 200);
+        }, 3000);
     }
 });
