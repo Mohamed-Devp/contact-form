@@ -62,11 +62,11 @@ label, legend {
     color: var(--grey-900);
 }
 
-input[type="text"], textarea, span, label, .submit {
+input[type="text"], input[type="email"], textarea, span, label, .submit {
     transition: border-color .2s ease-in, background-color .2s ease-in;
 }
 
-input[type="text"], textarea {
+input[type="text"], input[type="email"], textarea {
     padding: 0.875rem 1.5rem;
     border: 2px solid var(--grey-500);
     border-radius: 0.5rem;
@@ -76,13 +76,17 @@ input[type="text"], textarea {
     cursor: pointer;
 }
 
-input[type="text"]:hover, textarea:hover {
+input:hover, textarea:hover {
     border-color: var(--green-600);
 }
 
-input[type="text"]:focus, textarea:focus {
+input:focus, textarea:focus {
     cursor: text;
     border-color: var(--green-600);
+}
+
+input[aria-invalid="true"], textarea[aria-invalid="true"] {
+    border-color: var(--red);
 }
 
 input[type="radio"], input[type="checkbox"] {
@@ -94,18 +98,29 @@ input[type="radio"], input[type="checkbox"] {
     pointer-events: none;
 }
 
-label + input[type="text"], label + textarea {
-    margin-top: 10px;
+label + input[type="text"], label + input[type="email"], label + textarea {
+    margin-top: 0.625rem;
 }
 
 .asterisk {
-    margin-left: 4px;
+    margin-left: 0.25rem;
     font-size: var(--fs);
     font-weight: var(--regular);
     color: var(--green-600);
 }
 
-.full-name, .query-type {
+.error-msg {
+    margin-top: 0.625rem;
+    font-size: 0.875rem;
+    font-weight: var(--regular);
+    color: var(--red);
+}
+
+.error-msg.empty {
+    display: none;
+}
+
+.full-name {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
@@ -117,7 +132,17 @@ label + input[type="text"], label + textarea {
 }
 
 .query-type {
-    padding-top: 1.125rem;
+    padding-top: 1rem;
+}
+
+.query-type .error-msg {
+    margin-top: 1rem;
+}
+
+.radio-btns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
 }
 
 .radio-wrapper {
@@ -173,11 +198,14 @@ textarea {
     resize: none;
 }
 
+.contact-consent {
+    padding: 0.75rem 0;
+}
+
 .checkbox-wrapper {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 0.75rem 0;
     cursor: pointer;
 }
 
@@ -232,6 +260,54 @@ input[type="checkbox"]:checked + .checkbox img {
 
 .submit:hover, .submit:focus {
     background-color: var(--grey-900);
+}
+
+.success-message {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 0;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    background-color: var(--grey-900);
+    animation: slideDownFadeIn 0.2s ease-in forwards;
+}
+
+.success-message.visible {
+    display: block;
+}
+
+.confirmation {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.confirmation p {
+    font-size: var(--fs);
+    font-weight: var(--bold);
+    color: var(--white);
+}
+
+.message {
+    margin-top: 0.75rem;
+    font-size: var(--fs);
+    font-weight: var(--regular);
+    color: var(--grey-500);
+}
+
+.fade-out {
+    animation: slideUpFadeOut 0.2s ease-in forwards;
+}
+
+@keyframes slideDownFadeIn {
+    from { opacity: 0; transform: translate(-50%, -50%); }
+    to   { opacity: 1; transform: translate(-50%, 25px);}
+}
+
+@keyframes slideUpFadeOut {
+    from { opacity: 1; transform: translate(-50%, 25px);}
+    to   { opacity: 0; transform: translate(-50%, -50%); }
 }
 
 @media (max-width: 38rem) {
