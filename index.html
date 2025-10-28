@@ -13,61 +13,108 @@
 <body>
 	<main>
 		<h1>Contact Us</h1>
-		<form action="#" method="post">
+		<form action="#" method="post" novalidate>
 			<div class="full-name">
 				<div class="first-name">
 					<label for="first-name">
 						First Name <span class="asterisk" aria-hidden="true">*</span>
 					</label>
-					<input id="first-name" type="text" name="first-name" placeholder="John" required>
+					<input 
+						id="first-name"
+						type="text" 
+						name="first-name" 
+						placeholder="John"
+						required 
+						minlength="2"
+						aria-describedby="first-name-error">
+					<p id="first-name-error" class="error-msg empty" aria-live="polite"></p>
 				</div>
 				<div class="last-name">
 					<label for="last-name">
 						Last Name <span class="asterisk" aria-hidden="true">*</span>
 					</label>
-					<input id="last-name" type="text" name="last-name" placeholder="Doe" required>
+					<input 
+						id="last-name" 
+						type="text" 
+						name="last-name" 
+						placeholder="Doe"
+						required
+						minlength="2"
+						aria-describedby="last-name-error">
+					<p id="last-name-error" class="error-msg empty" aria-live="polite"></p>
 				</div>
 			</div>
 			<div class="email-address">
 				<label for="email-address">
 					Email Address <span class="asterisk" aria-hidden="true">*</span>
 				</label>
-				<input id="email-address" type="text" name="email-address" placeholder="johndoe@example.com" required>
+				<input 
+					id="email-address" 
+					type="email" 
+					name="email-address" 
+					placeholder="johndoe@example.com" 
+					required
+					aria-describedby="email-address-error">
+				<p id="email-address-error" class="error-msg empty" aria-live="polite"></p>
 			</div>
 			<fieldset class="query-type">
 				<legend>
 					Query Type <span class="asterisk" aria-hidden="true">*</span>
 				</legend>
-				<label class="radio-wrapper">
-					<input type="radio" name="query-type" value="general" required>
-					<span class="radio-btn">
-						<img src="./images/icon-radio-selected.svg" alt="Selected radio">
-					</span>
-					General Enquiry
-				</label>
-				<label class="radio-wrapper">
-					<input type="radio" name="query-type" value="support">
-					<span class="radio-btn">
-						<img src="./images/icon-radio-selected.svg" alt="Selected radio">
-					</span>
-					Support Request
-				</label>
+				<div class="radio-btns">
+					<label class="radio-wrapper">
+						<input 
+							type="radio" 
+							name="query-type" 
+							value="general" 
+							required
+							aria-describedby="query-type-error">
+						<span class="radio-btn">
+							<img src="./images/icon-radio-selected.svg" alt="Selected radio">
+						</span>
+						General Enquiry
+					</label>
+					<label class="radio-wrapper">
+						<input type="radio" name="query-type" value="support">
+						<span class="radio-btn">
+							<img src="./images/icon-radio-selected.svg" alt="Selected radio">
+						</span>
+						Support Request
+					</label>
+				</div>
+				<p id="query-type-error" class="error-msg empty" aria-live="polite"></p>
 			</fieldset>
 			<div class="message">
 				<label for="message">
 					Message <span class="asterisk" aria-hidden="true">*</span>
 				</label>
-				<textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+				<textarea 
+					id="message" 
+					name="message" 
+					placeholder="Enter your message" 
+					required
+					minlength="8"
+					aria-describedby="message-error"></textarea>
+				<p id="message-error" class="error-msg empty" aria-live="polite"></p>
 			</div>
-			<label class="checkbox-wrapper">
-				<input id="contact" type="checkbox" name="contact" value="consent" required>
-				<span class="checkbox">
-					<img src="./images/icon-checkbox-check.svg" alt="Checked checkbox">
-				</span>
-				<span class="label-text">
-					I consent to being contacted by the <span class="last-word">team <span class="asterisk" aria-hidden="true">*</span></span>
-				</span>
-			</label>
+			<div class="contact-consent">
+				<label class="checkbox-wrapper">
+					<input 
+						type="checkbox" 
+						name="contact" 
+						value="consent" 
+						required
+						aria-describedby="contact-error">
+					<span class="checkbox">
+						<img src="./images/icon-checkbox-check.svg" alt="Checked checkbox">
+					</span>
+					<span class="label-text">
+						I consent to being contacted by the
+						<span class="last-word">team <span class="asterisk" aria-hidden="true">*</span></span>
+					</span>
+				</label>
+				<p id="contact-error" class="error-msg empty" aria-live="polite"></p>
+			</div>
 			<button class="submit" type="submit">Submit</button>
 		</form>
 	</main>
