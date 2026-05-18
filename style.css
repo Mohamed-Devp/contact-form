@@ -1,0 +1,16 @@
+/* || RESET */
+
+*,
+*::before,
+*::after {
+    border: unset;
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+input,
+textarea,
+button {
+    font: inherit;
+}
