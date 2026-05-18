@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/favicon-32x32.png" type="image/png">
+    <title>Contact Form</title>
+</head>
+<body>
+    <main class="contact-form-container">
+        <h1>Contact Us</h1>
+        <form action="#" class="contact-form">
+            <div class="form-group">
+                <div class="form-section">
+                    <label for="first-name" class="is-required">First Name</label>
+                    <input
+                        type="text"
+                        name="first-name"
+                        required
+                        id="first-name"
+                        aria-describedby="first-name-error"
+                    />
+                    <span
+                        id="first-name-error"
+                        class="error-msg"
+                        aria-live="polite"
+                    ></span>
+                </div>
+                <div class="form-section">
+                    <label for="last-name" class="is-required">Last Name</label>
+                    <input
+                        type="text"
+                        name="last-name"
+                        required
+                        id="last-name"
+                        aria-describedby="last-name-error"
+                    />
+                    <span
+                        id="last-name-error"
+                        class="error-msg"
+                        aria-live="polite"
+                    ></span>
+                </div>
+            </div>
+            <div class="form-section">
+                <label for="email" class="is-required">Email Address</label>
+                <input
+                    type="email"
+                    name="email"
+                    required
+                    id="email"
+                    aria-describedby="email-error"
+                />
+                <span
+                    id="email-error"
+                    class="error-msg"
+                    aria-live="polite"
+                ></span>
+            </div>
+            <fieldset class="form-section">
+                <legend class="is-required">Query Type</legend>
+                <ul class="form-group">
+                    <li>
+                        <label for="query-type-1" class="query-type">
+                            <input
+                                type="radio"
+                                name="query-type"
+                                value="general-enquiry" 
+                                required
+                                id="query-type-1"
+                                aria-describedby="query-type-error"
+                            />
+                            General Enquiry
+                        </label>
+                    </li>
+                    <li>
+                        <label for="query-type-2" class="query-type">
+                            <input
+                                type="radio"
+                                name="query-type"
+                                value="support-request" 
+                                id="query-type-2"
+                                aria-describedby="query-type-error"
+                            />
+                            Support Request
+                        </label>
+                    </li>
+                </ul>
+                <span
+                    id="query-type-error"
+                    class="error-msg"
+                    aria-live="polite"
+                ></span>
+            </fieldset>
+            <div class="form-section">
+                <label for="message" class="is-required">Message</label>
+                <textarea
+                    name="message"
+                    id="message"
+                    required
+                    aria-describedby="message-error"
+                ></textarea>
+                <span
+                    id="message-error"
+                    class="error-msg"
+                    aria-live="polite"
+                ></span>
+            </div>
+            <div class="form-section">
+                <label for="consent" class="consent-label">
+                    <input
+                        type="checkbox"
+                        name="consent"
+                        required
+                        id="consent"
+                        aria-describedby="consent-error"
+                    />
+                    <span class="is-required">
+                        I consent to being contacted by the team
+                    </span>
+                </label>
+                <span
+                    id="consent-error"
+                    class="error-msg"
+                    aria-live="polite"
+                ></span>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+</body>
+</html>
