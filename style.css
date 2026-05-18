@@ -14,3 +14,19 @@ textarea,
 button {
     font: inherit;
 }
+
+/* || VARIABLES */ 
+
+:root {
+    /* COLORS */
+    --green-200: 148 38% 91%;
+    --green-600: 169 82% 27%;
+    --red: 0 66% 54%;
+
+    --white: 0 0 100%;
+    --grey-500: 186 15% 59%;
+    --grey-900: 187 24% 22%;
+
+    /* TYPOGRAPHY */
+    --font-family-primary: "Karla";
+}
