@@ -52,6 +52,10 @@ h1 {
     color: hsl(var(--grey-900));
 }
 
+ul {
+    list-style-type: none;
+}
+
 label,
 legend {
     font-size: 1rem;
@@ -60,11 +64,16 @@ legend {
 
 input,
 textarea {
-    padding: 1rem 1.375rem;
+    padding: 0.875rem 1.375rem;
     border: 1px solid hsl(var(--grey-500));
     border-radius: 8px;
     font-size: 1.125rem;
     color: hsl(var(--grey-900));
+}
+
+input:invalid,
+textarea:invalid {
+    border-color: hsl(var(--red));
 }
 
 input[type="radio"],
@@ -96,4 +105,72 @@ button {
     font-weight: 700;
     color: hsl(var(--white));
     background-color: hsl(var(--green-600));
+}
+
+/* || CONTACT FORM */
+
+.contact-form-container {
+    padding: 1.5rem;
+    border-radius: 16px;
+    background-color: hsl(var(--white));
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    margin-top: 2.25rem;
+}
+
+.full-name,
+.query-types {
+    display: grid;
+}
+
+.full-name {
+    gap: 1.75rem;
+}
+
+.query-types {
+    gap: 1rem;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+fieldset.form-section legend {
+    margin-bottom: 0.75rem;
+}
+
+.query-type {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.875rem 1.375rem;
+    border: 1px solid hsl(var(--grey-500));
+    border-radius: 8px;
+}
+
+.consent-label {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    line-height: 1.5;
+}
+
+.consent-label :first-child {
+    flex: none;
+}
+
+.error-msg {
+    display: none;
+    font-size: 1rem;
+    color: hsl(var(--red));
+}
+
+.error-msg.is-active {
+    display: block;
 }
