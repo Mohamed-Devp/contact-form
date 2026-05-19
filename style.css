@@ -93,14 +93,40 @@ textarea:user-invalid {
 input[type="radio"],
 input[type="checkbox"] {
     appearance: none;
+    position: relative;
     width: 1.125rem;
     height: 1.125rem;
     padding: 0;
     border: 2px solid hsl(var(--grey-500));
 }
 
+input[type="radio"]::before,
+input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    opacity: 0;
+    transition: opacity 0.15s ease-in;
+}
+
+input[type="radio"]:checked::before,
+input[type="checkbox"]:checked::before {
+    opacity: 1;
+}
+
 input[type="radio"] {
     border-radius: 50%;
+}
+
+input[type="radio"]::before {
+    border-radius: 50%;
+    background:
+        url("assets/images/icon-radio-selected.svg") no-repeat center / 100% 100%;
+}
+
+input[type="checkbox"]::before {
+    background:
+        url("assets/images/icon-checkbox-check.svg") no-repeat center / 100% 100%;
 }
 
 input[type="checkbox"] {
@@ -174,6 +200,11 @@ fieldset.form-section legend {
     border: 1px solid hsl(var(--grey-500));
     border-radius: 8px;
     cursor: pointer;
+}
+
+.query-type:has( input[type="radio"]:checked ) {
+    border-color: hsl(var(--green-600));
+    background-color: hsl(var(--green-200));
 }
 
 .consent-label {
