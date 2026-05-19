@@ -30,3 +30,70 @@ button {
     /* TYPOGRAPHY */
     --font-family-primary: "Karla";
 }
+
+/* || BASE */
+
+html {
+    box-sizing: border-box;
+    font-family: var(--font-family-primary), sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background-color: hsl(var(--green-200));
+}
+
+h1 {
+    font-size: 2rem;
+    color: hsl(var(--grey-900));
+}
+
+label,
+legend {
+    font-size: 1rem;
+    color: hsl(var(--grey-900));
+}
+
+input,
+textarea {
+    padding: 1rem 1.375rem;
+    border: 1px solid hsl(var(--grey-500));
+    border-radius: 8px;
+    font-size: 1.125rem;
+    color: hsl(var(--grey-900));
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    appearance: none;
+    width: 1.125rem;
+    height: 1.125rem;
+    padding: 0;
+    border: 2px solid hsl(var(--grey-500));
+}
+
+input[type="radio"] {
+    border-radius: 50%;
+}
+
+input[type="checkbox"] {
+    border-radius: 0;
+}
+
+textarea {
+    resize: none;
+    height: 12.875rem;
+}
+
+button {
+    padding: 1.125rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: hsl(var(--white));
+    background-color: hsl(var(--green-600));
+}
