@@ -21,6 +21,7 @@ button {
     /* COLORS */
     --green-200: 148 38% 91%;
     --green-600: 169 82% 27%;
+    --green-800: 169 82% 12%;
     --red: 0 66% 54%;
 
     --white: 0 0 100%;
@@ -70,10 +71,22 @@ textarea {
     border-radius: 8px;
     font-size: 1.125rem;
     color: hsl(var(--grey-900));
+    cursor: pointer;
+    transition: border-color 0.15s ease-in;
 }
 
-input:invalid,
-textarea:invalid {
+input:hover,
+textarea:hover {
+    border-color: hsl(var(--green-600));
+}
+
+input:focus,
+textarea:focus {
+    cursor: text;
+}
+
+input:user-invalid,
+textarea:user-invalid {
     border-color: hsl(var(--red));
 }
 
@@ -106,6 +119,12 @@ button {
     font-weight: 700;
     color: hsl(var(--white));
     background-color: hsl(var(--green-600));
+    cursor: pointer;
+    transition: background-color 0.15s ease-in;
+}
+
+button:hover {
+    background-color: hsl(var(--green-800));
 }
 
 /* || CONTACT FORM */
@@ -154,6 +173,7 @@ fieldset.form-section legend {
     padding: 0.875rem 1.375rem;
     border: 1px solid hsl(var(--grey-500));
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .consent-label {
@@ -198,5 +218,13 @@ fieldset.form-section legend {
 @media screen and (min-width: 48rem) {
     textarea {
         height: 6.75rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    input,
+    textarea,
+    button {
+        transition: none;
     }
 }
