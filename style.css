@@ -64,6 +64,7 @@ legend {
 
 input,
 textarea {
+    width: 100%;
     padding: 0.875rem 1.375rem;
     border: 1px solid hsl(var(--grey-500));
     border-radius: 8px;
@@ -95,7 +96,7 @@ input[type="checkbox"] {
 
 textarea {
     resize: none;
-    height: 12.875rem;
+    height: 15rem;
 }
 
 button {
@@ -110,6 +111,7 @@ button {
 /* || CONTACT FORM */
 
 .contact-form-container {
+    width: min(100%, 46rem);
     padding: 1.5rem;
     border-radius: 16px;
     background-color: hsl(var(--white));
@@ -173,4 +175,28 @@ fieldset.form-section legend {
 
 .error-msg.is-active {
     display: block;
+}
+
+/* || STATES */
+
+.is-required::after {
+    content: "*";
+    margin-left: 0.5rem;
+    color: hsl(var(--green-600));
+}
+
+/* || MEDIA QUERIES */
+
+@media screen and (min-width: 32rem) {
+    .full-name,
+    .query-types {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    textarea {
+        height: 6.75rem;
+    }
 }
