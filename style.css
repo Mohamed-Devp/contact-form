@@ -85,8 +85,8 @@ textarea:focus {
     cursor: text;
 }
 
-input:user-invalid,
-textarea:user-invalid {
+input.is-invalid,
+textarea.is-invalid {
     border-color: hsl(var(--red));
 }
 
