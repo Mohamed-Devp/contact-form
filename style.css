@@ -21,7 +21,7 @@ button {
     /* COLORS */
     --green-200: 148 38% 91%;
     --green-600: 169 82% 27%;
-    --green-800: 169 82% 12%;
+    --green-800: 185 24% 22%;
     --red: 0 66% 54%;
 
     --white: 0 0 100%;
@@ -228,12 +228,62 @@ fieldset.form-section legend {
     display: block;
 }
 
+/* || SUCCESS MESSAGE */
+
+.success-msg {
+    position: fixed;
+    left: 50%; top: 1.25rem;
+    transform: translateX(-50%);
+    min-width: 18rem;
+    padding: 1.625rem 1.5rem;
+    border-radius: 12px;
+    opacity: 0;
+    background-color: hsl(var(--green-800));
+}
+
+.success-msg.fade-in {
+    animation: fadeIn 0.3s ease-in forwards;
+}
+
+.success-msg.fade-out {
+    animation: fadeOut 0.3s ease-in forwards;
+}
+
+.success-msg .title-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.success-msg .title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: hsl(var(--white));
+}
+
+.success-msg .content {
+    margin-top: 0.625rem;
+    font-size: 1rem;
+    color: hsl(var(--grey-500));
+}
+
 /* || STATES */
 
 .is-required::after {
     content: "*";
     margin-left: 0.5rem;
     color: hsl(var(--green-600));
+}
+
+/* || ANIMATIONS */
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to   { opacity: 0; }
 }
 
 /* || MEDIA QUERIES */
