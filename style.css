@@ -72,7 +72,6 @@ textarea {
     font-size: 1.125rem;
     color: hsl(var(--grey-900));
     cursor: pointer;
-    transition: border-color 0.15s ease-in;
 }
 
 input:hover,
@@ -106,7 +105,6 @@ input[type="checkbox"]::before {
     position: absolute;
     inset: -2px;
     opacity: 0;
-    transition: opacity 0.15s ease-in;
 }
 
 input[type="radio"]:checked::before,
@@ -146,7 +144,6 @@ button {
     color: hsl(var(--white));
     background-color: hsl(var(--green-600));
     cursor: pointer;
-    transition: background-color 0.15s ease-in;
 }
 
 button:hover {
@@ -241,14 +238,6 @@ fieldset.form-section legend {
     background-color: hsl(var(--green-800));
 }
 
-.success-msg.fade-in {
-    animation: fadeIn 0.3s ease-in forwards;
-}
-
-.success-msg.fade-out {
-    animation: fadeOut 0.3s ease-in forwards;
-}
-
 .success-msg .title-container {
     display: flex;
     align-items: center;
@@ -302,10 +291,26 @@ fieldset.form-section legend {
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: no-preference) {
     input,
-    textarea,
+    textarea {
+        transition: border-color 0.15s ease-in;
+    }
+
+    input[type="radio"]::before,
+    input[type="checkbox"]::before {
+        transition: opacity 0.15s ease-in;
+    }
+
     button {
-        transition: none;
+        transition: background-color 0.15s ease-in;
+    }
+
+    .success-msg.fade-in {
+        animation: fadeIn 0.3s ease-in forwards;
+    }
+
+    .success-msg.fade-out {
+        animation: fadeOut 0.3s ease-in forwards;
     }
 }
