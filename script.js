@@ -18,6 +18,8 @@ const messageErrorOut = document.querySelector("#message-error");
 const consentInp = document.querySelector("#consent");
 const consentErrorOut = document.querySelector("#consent-error");
 
+const successMsg = document.querySelector(".success-msg");
+
 firstNameInp.addEventListener("input", () => {
     validateTextField(firstNameInp, firstNameErrorOut);
 });
@@ -61,8 +63,11 @@ consentInp.addEventListener("change", validateConsent);
 consentInp.addEventListener("invalid", validateConsent);
 
 contactForm.addEventListener("submit", (event) => {
-    if (!contactForm.checkValidity()) {
-        event.preventDefault();
+    event.preventDefault();
+
+    if (contactForm.checkValidity()) {
+        contactForm.reset();
+        showSuccessMessage();
     }
 });
 
@@ -119,3 +124,28 @@ function validateConsent() {
         );
     }
 }
+
+function showSuccessMessage() {
+    const successMsgContent = `
+        <div class="title-container">
+            <img src="assets/images/icon-success-check.svg" alt="">
+            <p class="title">Message sent!</p>
+        </div>
+        <p class="content">
+            Thanks for completing the form. We'll be in touch soon!
+        </p>
+    `;
+
+    successMsg.innerHTML = successMsgContent;
+    successMsg.classList.add("fade-in");
+    
+    setTimeout(() => {
+        successMsg.classList.remove("fade-in");
+        successMsg.classList.add("fade-out");
+
+        setTimeout(() => {
+            successMsg.classList.remove("fade-out");
+            successMsg.innerHTML = ""; // Reset the live region content
+        }, 300);
+    }, 3500);
+};
