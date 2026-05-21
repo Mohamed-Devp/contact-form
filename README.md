@@ -41,11 +41,11 @@ Users should be able to:
 
 ## My process
 
-### Built with
+### Most proud of
 
-### What I learned
+- **Accessibility-first implementation**: Built the form with semantic HTML5 and appropriate ARIA attributes to ensure it's usable by keyboard-only users and screen reader users.
 
-### Continued development
+- **Clean form validation implementation**: Implemented client-side form validation using the JavaScript constraint validation API with user-experience and scalability in mind.
 
 ## Author
 
