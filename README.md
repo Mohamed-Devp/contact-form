@@ -31,6 +31,8 @@ Users should be able to:
 
 ### Screenshot
 
+![The desktop preview of the contact form](preview.png)
+
 ### Links
 
 ## My process
