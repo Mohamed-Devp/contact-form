@@ -9,9 +9,7 @@ This is a solution to the [Contact form challenge on Frontend Mentor](https://ww
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
+  - [Most proud of](#most-proud-of)
 - [Author](#author)
 
 ## Overview
