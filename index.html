@@ -10,128 +10,106 @@
     <link rel="stylesheet" href="style.css">
     <title>Contact Form</title>
 </head>
-<body>
-    <main class="contact-form-container">
+<body class="page">
+    <main class="page__inner">
         <h1>Contact Us</h1>
-        <form action="#" novalidate class="contact-form">
-            <div class="full-name">
-                <div class="form-section">
-                    <label for="first-name" class="is-required">First Name</label>
-                    <input
-                        type="text"
-                        name="first-name"
-                        required
-                        id="first-name"
-                        aria-describedby="first-name-error"
-                    />
-                    <span
-                        id="first-name-error"
-                        class="error-msg"
-                        aria-live="polite"
-                    ></span>
-                </div>
-                <div class="form-section">
-                    <label for="last-name" class="is-required">Last Name</label>
-                    <input
-                        type="text"
-                        name="last-name"
-                        required
-                        id="last-name"
-                        aria-describedby="last-name-error"
-                    />
-                    <span
-                        id="last-name-error"
-                        class="error-msg"
-                        aria-live="polite"
-                    ></span>
-                </div>
+        <form class="form page__form" novalidate>
+            <p class="alert u-sr-only" role="alert" aria-live="assertive"></p>
+            <div class="form__section">
+                <label for="first-name" class="label">First Name:</label>
+                <input
+                    type="text"
+                    name="first-name"
+                    required
+                    id="first-name"
+                    class="field"
+                    aria-describedby="first-name-error"
+                />
+                <p id="first-name-error" class="error"></p>
             </div>
-            <div class="form-section">
-                <label for="email" class="is-required">Email Address</label>
+            <div class="form__section">
+                <label for="last-name" class="label">Last Name:</label>
+                <input
+                    type="text"
+                    name="last-name"
+                    required
+                    id="last-name"
+                    class="field"
+                    aria-describedby="last-name-error"
+                />
+                <p id="last-name-error" class="error"></p>
+            </div>
+            <div class="form__section u-span-2">
+                <label for="email" class="label">Email Address:</label>
                 <input
                     type="email"
                     name="email"
                     required
                     id="email"
+                    class="field"
                     aria-describedby="email-error"
                 />
-                <span
-                    id="email-error"
-                    class="error-msg"
-                    aria-live="polite"
-                ></span>
+                <p id="email-error" class="error"></p>
             </div>
-            <fieldset class="form-section">
-                <legend class="is-required">Query Type</legend>
-                <ul class="query-types">
-                    <li>
-                        <label for="query-type-1" class="query-type">
+            <fieldset class="form__group u-span-2">
+                <legend class="label">Query Type:</legend>
+                <ul class="options">
+                    <li class="option">
+                        <label for="query-type-1" class="label option__label">
                             <input
                                 type="radio"
                                 name="query-type"
-                                value="general-enquiry" 
                                 required
                                 id="query-type-1"
+                                class="radio"
                                 aria-describedby="query-type-error"
                             />
                             General Enquiry
                         </label>
                     </li>
-                    <li>
-                        <label for="query-type-2" class="query-type">
+                    <li class="option">
+                        <label for="query-type-2" class="label option__label">
                             <input
                                 type="radio"
                                 name="query-type"
-                                value="support-request" 
                                 id="query-type-2"
+                                class="radio"
                                 aria-describedby="query-type-error"
                             />
                             Support Request
                         </label>
                     </li>
                 </ul>
-                <span
-                    id="query-type-error"
-                    class="error-msg"
-                    aria-live="polite"
-                ></span>
+                <p id="query-type-error" class="error"></p>
             </fieldset>
-            <div class="form-section">
-                <label for="message" class="is-required">Message</label>
+            <div class="form__section u-span-2">
+                <label for="message" class="label">Message:</label>
                 <textarea
                     name="message"
-                    id="message"
                     required
+                    minlength="8"
+                    id="message"
+                    class="field field_type_mutliline"
                     aria-describedby="message-error"
                 ></textarea>
-                <span
-                    id="message-error"
-                    class="error-msg"
-                    aria-live="polite"
-                ></span>
+                <p id="message-error" class="error"></p>
             </div>
-            <div class="form-section">
-                <label for="consent" class="consent-label">
-                    <input
-                        type="checkbox"
-                        name="consent"
-                        required
-                        id="consent"
-                        aria-describedby="consent-error"
-                    />
-                    <span class="is-required">
-                        I consent to being contacted by the team
-                    </span>
+            <div class="form__row u-span-2">
+                <input
+                    type="checkbox"
+                    name="consent"
+                    required
+                    id="consent"
+                    class="checkbox"
+                    aria-describedby="consent-error"
+                />
+                <label for="consent" class="label">
+                    I consent to being contacted by the team
                 </label>
-                <span
-                    id="consent-error"
-                    class="error-msg"
-                    aria-live="polite"
-                ></span>
             </div>
-            <button type="submit">Submit</button>
+            <button class="btn u-span-2">Submit</button>
         </form>
-        <div class="success-msg" role="status" aria-atomic="true"></div>
+        <div class="status" role="status" aria-live="polite"></div>
     </main>
     <script src="script.js"></script>
 </body>
