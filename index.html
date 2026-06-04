@@ -12,11 +12,11 @@
 </head>
 <body class="page">
     <main class="page__inner">
-        <h1>Contact Us</h1>
+        <h1 class="page__heading">Contact Us</h1>
         <form class="form page__form" novalidate>
             <p class="alert u-sr-only" role="alert" aria-live="assertive"></p>
-            <div class="form__section">
-                <label for="first-name" class="label">First Name:</label>
+            <div class="form__section u-flex-column">
+                <label for="first-name" class="label label_required">First Name</label>
                 <input
                     type="text"
                     name="first-name"
@@ -27,8 +27,8 @@
                 />
                 <p id="first-name-error" class="error"></p>
             </div>
-            <div class="form__section">
-                <label for="last-name" class="label">Last Name:</label>
+            <div class="form__section u-flex-column">
+                <label for="last-name" class="label label_required">Last Name</label>
                 <input
                     type="text"
                     name="last-name"
@@ -39,8 +39,8 @@
                 />
                 <p id="last-name-error" class="error"></p>
             </div>
-            <div class="form__section u-span-2">
-                <label for="email" class="label">Email Address:</label>
+            <div class="form__section u-flex-column u-span-row">
+                <label for="email" class="label label_required">Email Address</label>
                 <input
                     type="email"
                     name="email"
@@ -51,11 +51,11 @@
                 />
                 <p id="email-error" class="error"></p>
             </div>
-            <fieldset class="form__group u-span-2">
-                <legend class="label">Query Type:</legend>
+            <fieldset class="form__group u-flex-column u-span-row">
+                <legend class="label label_required">Query Type</legend>
                 <ul class="options">
-                    <li class="option">
-                        <label for="query-type-1" class="label option__label">
+                    <li class="options__item">
+                        <label for="query-type-1" class="option">
                             <input
                                 type="radio"
                                 name="query-type"
@@ -67,8 +67,8 @@
                             General Enquiry
                         </label>
                     </li>
-                    <li class="option">
-                        <label for="query-type-2" class="label option__label">
+                    <li class="options__item">
+                        <label for="query-type-2" class="option">
                             <input
                                 type="radio"
                                 name="query-type"
@@ -82,32 +82,30 @@
                 </ul>
                 <p id="query-type-error" class="error"></p>
             </fieldset>
-            <div class="form__section u-span-2">
-                <label for="message" class="label">Message:</label>
+            <div class="form__section u-flex-column u-span-row">
+                <label for="message" class="label label_required">Message</label>
                 <textarea
                     name="message"
                     required
                     minlength="8"
                     id="message"
-                    class="field field_type_mutliline"
+                    class="field field_type_multiline"
                     aria-describedby="message-error"
                 ></textarea>
                 <p id="message-error" class="error"></p>
             </div>
-            <div class="form__row u-span-2">
+            <div class="form__row u-span-row">
                 <input
                     type="checkbox"
                     name="consent"
                     required
                     id="consent"
-                    class="checkbox"
+                    class="checkbox u-shrink-0"
                     aria-describedby="consent-error"
                 />
-                <label for="consent" class="label">
-                    I consent to being contacted by the team
-                </label>
+                <label for="consent" class="label label_required">I consent to being contacted by the team</label>
             </div>
-            <button class="btn u-span-2">Submit</button>
+            <button class="btn u-span-row">Submit</button>
         </form>
         <div class="status" role="status" aria-live="polite"></div>
     </main>
