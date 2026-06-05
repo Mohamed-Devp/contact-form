@@ -24,6 +24,7 @@
                     id="first-name"
                     class="field"
                     aria-describedby="first-name-error"
+                    data-label="First Name"
                 />
                 <p id="first-name-error" class="error"></p>
             </div>
@@ -36,6 +37,7 @@
                     id="last-name"
                     class="field"
                     aria-describedby="last-name-error"
+                    data-label="Last Name"
                 />
                 <p id="last-name-error" class="error"></p>
             </div>
@@ -48,6 +50,7 @@
                     id="email"
                     class="field"
                     aria-describedby="email-error"
+                    data-label="Email Address"
                 />
                 <p id="email-error" class="error"></p>
             </div>
@@ -61,7 +64,7 @@
                                 name="query-type"
                                 required
                                 id="query-type-1"
-                                class="radio"
+                                class="radio radio_name_query-type"
                                 aria-describedby="query-type-error"
                             />
                             General Enquiry
@@ -91,23 +94,40 @@
                     id="message"
                     class="field field_type_multiline"
                     aria-describedby="message-error"
+                    data-label="Message"
                 ></textarea>
                 <p id="message-error" class="error"></p>
             </div>
-            <div class="form__row u-span-row">
-                <input
-                    type="checkbox"
-                    name="consent"
-                    required
-                    id="consent"
-                    class="checkbox u-shrink-0"
-                    aria-describedby="consent-error"
-                />
-                <label for="consent" class="label label_required">I consent to being contacted by the team</label>
+            <div class="form__section u-span-row">
+                <div class="form__row">
+                    <input
+                        type="checkbox"
+                        name="consent"
+                        required
+                        id="consent"
+                        class="checkbox checkbox_name_consent u-shrink-0"
+                        aria-describedby="consent-error"
+                    />
+                    <label for="consent" class="label label_required">I consent to being contacted by the team</label>
+                </div>
+                <p id="consent-error" class="error"></p>
             </div>
             <button class="btn u-span-row">Submit</button>
         </form>
-        <div class="status" role="status" aria-live="polite"></div>
+        <div class="toast toast_fade_in">
+            <h2 class="toast__title">
+                <img src="assets/images/icon-success-check.svg" alt="">
+                Message sent!
+            </h2>
+            <p class="toast__content">
+                Thanks for completing the form. We'll be in touch soon!
+            </p>
+        </div>
+        <div
+            class="status u-sr-only"
+            aria-live="polite"
+            aria-atomic="true"
+        ></div>
     </main>
     <script src="script.js"></script>
 </body>

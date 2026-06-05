@@ -1,151 +1,111 @@
-const contactForm = document.querySelector(".contact-form");
+const form = document.querySelector(".form");
 
-const firstNameInp = document.querySelector("#first-name");
-const firstNameErrorOut = document.querySelector("#first-name-error");
+const fields = document.querySelectorAll(".field");
+const queryTypeRadio = document.querySelector(".radio_name_query-type");
+const consentCheckbox = document.querySelector(".checkbox_name_consent");
 
-const lastNameInp = document.querySelector("#last-name");
-const lastNameErrorOut = document.querySelector("#last-name-error");
+const alertBox = document.querySelector(".alert");
+const statusBox = document.querySelector(".status");
 
-const emailInp = document.querySelector("#email");
-const emailErrorOut = document.querySelector("#email-error");
+const toast = document.querySelector(".toast");
 
-const queryTypeInps = document.querySelectorAll('input[name="query-type"]');
-const queryTypeErrorOut = document.querySelector("#query-type-error");
+function showError(inp, msg) {
+    const error = document.querySelector(
+        `#${inp.getAttribute("aria-describedby")}`
+    );
 
-const messageInp = document.querySelector("#message");
-const messageErrorOut = document.querySelector("#message-error");
+    error.textContent = msg;
+    if (!error.classList.contains("error_active")) {
+        error.classList.add("error_active");
+    }
+}
 
-const consentInp = document.querySelector("#consent");
-const consentErrorOut = document.querySelector("#consent-error");
+function hideError(inp) {
+    const error = document.querySelector(
+        `#${inp.getAttribute("aria-describedby")}`
+    );
 
-const successMsg = document.querySelector(".success-msg");
+    error.textContent = "";
+    error.classList.remove("error_active");
+}
 
-firstNameInp.addEventListener("input", () => {
-    validateTextField(firstNameInp, firstNameErrorOut);
-});
+fields.forEach(field => {
+    field.addEventListener("invalid", () => {
+        const label = field.getAttribute("data-label");
 
-firstNameInp.addEventListener("invalid", () => {
-    validateTextField(firstNameInp, firstNameErrorOut);
-});
+        field.classList.add("field_invalid");
 
-lastNameInp.addEventListener("input", () => {
-    validateTextField(lastNameInp, lastNameErrorOut);
-});
+        let alertMsg, errorMsg;
 
-lastNameInp.addEventListener("invalid", () => {
-    validateTextField(lastNameInp, lastNameErrorOut);
-});
-
-emailInp.addEventListener("input", validateEmailAddress);
-
-emailInp.addEventListener("invalid", validateEmailAddress);
-
-queryTypeInps.forEach(queryTypeInp => {
-    queryTypeInp.addEventListener("change", () => {
-        if (queryTypeInp.checked) {
-            hideError(queryTypeInps[0], queryTypeErrorOut);
+        if (field.validity.valueMissing) {
+            alertMsg = `${label} is required`;
+            errorMsg = "This field is required";
         }
+        else if (field.validity.typeMismtach) {
+            alertMsg = `${label} is invalid`;
+            errorMsg = `Please enter a valid ${label.toLowerCase()}`;
+        }
+        else if (field.validity.tooShort) {
+            alertMsg = `${label} must be at least ${field.minLength} characters long`;
+            errorMsg = `Must be at least ${field.minLength} characters long`;
+        }
+
+        if (alertBox.textContent === "") {
+            alertBox.textContent = alertMsg;
+        }
+
+        showError(field, errorMsg);
     });
 });
 
-queryTypeInps[0].addEventListener("invalid", validateQueryType);
-
-messageInp.addEventListener("input", () => {
-    validateTextField(messageInp, messageErrorOut);
+queryTypeRadio.addEventListener("invalid", () => {
+    showError(queryTypeRadio, "Please select a query type");
 });
 
-messageInp.addEventListener("invalid", () => {
-    validateTextField(messageInp, messageErrorOut);
+consentCheckbox.addEventListener("invalid", () => {
+    showError(consentCheckbox, "To submit this form, please consent to being contacted");
 });
 
-consentInp.addEventListener("change", validateConsent);
-
-consentInp.addEventListener("invalid", validateConsent);
-
-contactForm.addEventListener("submit", (event) => {
+form.addEventListener("submit", event => {
     event.preventDefault();
 
-    if (contactForm.checkValidity()) {
-        contactForm.reset();
-        showSuccessMessage();
+    // Reset the error messages before validation
+
+    alertBox.textContent = "";
+
+    fields.forEach(field => {
+        field.classList.remove("field_invalid");
+
+        hideError(field);
+    });
+
+    hideError(queryTypeRadio);
+    hideError(consentCheckbox);
+
+    // Validate the form
+
+    if (form.checkValidity()) {
+        form.reset();
+        showStatus();
     }
 });
 
-function showError(inp, errorOut, message) {
-    inp.classList.add("is-invalid");
-    errorOut.classList.add("is-active");
-    errorOut.textContent = message;
-}
-
-function hideError(inp, errorOut) {
-    inp.classList.remove("is-invalid");
-    errorOut.classList.remove("is-active");
-}
-
-function validateTextField(inp, errorOut) {
-    if (inp.validity.valueMissing) {
-        showError(inp, errorOut, "This field is required");
-    }
-    else {
-        hideError(inp, errorOut);
-    }
-}
-
-function validateEmailAddress() {
-    if (emailInp.validity.valueMissing) {
-        showError(emailInp, emailErrorOut, "This field is required");
-    }
-    else if (emailInp.validity.typeMismatch) {
-        showError(emailInp, emailErrorOut, "Please enter a valid email address");
-    }
-    else {
-        hideError(emailInp, emailErrorOut);
-    }
-}
-
-function validateQueryType() {
-    const firstQueryTypeInp = queryTypeInps[0];
-
-    if (firstQueryTypeInp.validity.valid) {
-        hideError(firstQueryTypeInp, queryTypeErrorOut);
-    }
-    else {
-        showError(firstQueryTypeInp, queryTypeErrorOut, "Please select a query type");
-    }
-}
-
-function validateConsent() {
-    if (consentInp.validity.valid) {
-        hideError(consentInp, consentErrorOut);
-    }
-    else {
-        showError(
-            consentInp, consentErrorOut, "To submit this form, please consent to being contated"
-        );
-    }
-}
-
-function showSuccessMessage() {
-    const successMsgContent = `
-        <div class="title-container">
-            <img src="assets/images/icon-success-check.svg" alt="">
-            <p class="title">Message sent!</p>
-        </div>
-        <p class="content">
-            Thanks for completing the form. We'll be in touch soon!
-        </p>
-    `;
-
-    successMsg.innerHTML = successMsgContent;
-    successMsg.classList.add("fade-in");
+function showStatus() {
+    statusBox.textContent = "Message sent! Thanks for completing the form. We'll be in touch soon!";
     
+    toast.classList.add("toast_active");
+
     setTimeout(() => {
-        successMsg.classList.remove("fade-in");
-        successMsg.classList.add("fade-out");
+        statusBox.textContent = "";
+
+        toast.classList.remove("toast_fade_in");
+        toast.classList.add("toast_fade_out");
 
         setTimeout(() => {
-            successMsg.classList.remove("fade-out");
-            successMsg.innerHTML = ""; // Reset the live region content
+            toast.classList.remove("toast_active");
+
+            toast.classList.remove("toast_fade_out");
+            toast.classList.add("toast_fade_in");
         }, 300);
-    }, 3500);
-};
+    }, 5000);
+}

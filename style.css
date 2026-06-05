@@ -250,18 +250,22 @@ textarea {
     background-color: hsl(var(--green-800));
 }
 
-.status {
+.toast {
     position: fixed;
     left: 50%; top: 1.25rem;
     transform: translateX(-50%);
+    display: none;
     min-width: 18rem;
     padding: 1.625rem 1.5rem;
     border-radius: 12px;
-    opacity: 0;
     background-color: hsl(var(--green-800));
 }
 
-.status__title {
+.toast_active {
+    display: block;
+}
+
+.toast__title {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -269,7 +273,7 @@ textarea {
     color: hsl(var(--white));
 }
 
-.status__content {
+.toast__content {
     margin-top: 0.625rem;
     font-size: 1rem;
     color: hsl(var(--grey-500));
@@ -278,7 +282,8 @@ textarea {
 /* || ANIMATIONS */
 
 @keyframes fadeIn {
-    to { opacity: 1; }
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 @keyframes fadeOut {
@@ -326,11 +331,11 @@ textarea {
         transition: background-color 0.15s ease-in;
     }
 
-    .status_fade_in {
+    .toast_fade_in {
         animation: fadeIn 0.3s ease-in forwards;
     }
 
-    .status_fade_out {
+    .toast_fade_out {
         animation: fadeOut 0.3s ease-in forwards;
     }
 }
