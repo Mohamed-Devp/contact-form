@@ -4,10 +4,14 @@ const fields = document.querySelectorAll(".field");
 const queryTypeRadio = document.querySelector(".radio_name_query-type");
 const consentCheckbox = document.querySelector(".checkbox_name_consent");
 
+const options = document.querySelectorAll(".option");
+
 const alertBox = document.querySelector(".alert");
 const statusBox = document.querySelector(".status");
 
 const toast = document.querySelector(".toast");
+
+let selectedOption;
 
 function showError(inp, msg) {
     const error = document.querySelector(
@@ -27,6 +31,26 @@ function hideError(inp) {
 
     error.textContent = "";
     error.classList.remove("error_active");
+}
+
+function showStatus() {
+    statusBox.textContent = "Message sent! Thanks for completing the form. We'll be in touch soon!";
+    
+    toast.classList.add("toast_active");
+
+    setTimeout(() => {
+        statusBox.textContent = "";
+
+        toast.classList.remove("toast_fade_in");
+        toast.classList.add("toast_fade_out");
+
+        setTimeout(() => {
+            toast.classList.remove("toast_active");
+
+            toast.classList.remove("toast_fade_out");
+            toast.classList.add("toast_fade_in");
+        }, 300);
+    }, 5000);
 }
 
 fields.forEach(field => {
@@ -90,22 +114,30 @@ form.addEventListener("submit", event => {
     }
 });
 
-function showStatus() {
-    statusBox.textContent = "Message sent! Thanks for completing the form. We'll be in touch soon!";
-    
-    toast.classList.add("toast_active");
+form.addEventListener("reset", () => {
+    options.forEach(option => {
+        const radio = option.firstElementChild;
+        
+        if (radio.getAttribute("checked") !== "") {
+            option.classList.remove("option_selected");
+        }
+    });
+});
 
-    setTimeout(() => {
-        statusBox.textContent = "";
+options.forEach(option => {
+    const radio = option.firstElementChild;
 
-        toast.classList.remove("toast_fade_in");
-        toast.classList.add("toast_fade_out");
+    if (radio.checked) {
+        option.classList.add("option_selected");
+        selectedOption = option;
+    }
 
-        setTimeout(() => {
-            toast.classList.remove("toast_active");
+    radio.addEventListener("change", () => {
+        if (selectedOption) {
+            selectedOption.classList.remove("option_selected");
+        }
 
-            toast.classList.remove("toast_fade_out");
-            toast.classList.add("toast_fade_in");
-        }, 300);
-    }, 5000);
-}
+        option.classList.add("option_selected");
+        selectedOption = option;
+    });
+});
